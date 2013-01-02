@@ -1,0 +1,66 @@
+/***************************************************************************
+* Copyright (C) 2009 - 2012 NeticNetworks *
+* Autor: JonatanSwithum - #Intruder*
+* Web: www.neticnetworks.uni.me *
+* Greetz: SkyDark, Dr.White, Shell-Root, Root-Hunter.. *
+***************************************************************************/
+
+//Declaración de variables
+var numero1 = 0;
+var numero2 = 0;
+var operacion;
+
+//Cuándo se apreta un número, esta función lo recibe.
+function asignarNumero(numero){
+if(document.getElementById("txtNumero").value == "0" || numero1==0){
+numero1 = numero;
+}else{
+numero1 += numero;
+}
+document.getElementById("txtNumero").value = numero1;
+}
+
+//Función tecla C.
+function teclaC(){
+numero1 = 0;
+numero2 = 0;
+document.getElementById("txtNumero").value = 0;
+}
+
+
+//Esta función se llama cada vez que se presiona un boton de operación.
+function operar(valor){
+if (numero1 == 0){
+resultado = parseInt(document.getElementById("txtNumero").value);
+}
+numero2 = parseInt(numero1);
+numero1= 0;
+operacion = valor;
+}
+
+/****************Función para boton igual*******************
+* suma = 1, resta = 2, multiplicación = 3, *
+* division = 4, exponente = 5 *
+************************************************************/
+function esIgual(){
+numero1 = parseInt(numero1);
+switch (operacion){
+case 1:
+numero1 += numero2;
+break;
+case 2:
+numero1 = numero2 - numero1;
+break;
+case 3:
+numero1 *= numero2;
+break;
+case 4:
+numero1 = numero2 / numero1;
+break;
+case 5:
+numero1 = Math.pow(numero2, numero1);
+break;
+}
+document.getElementById("txtNumero").value = numero1;
+numero2 = parseInt(numero1);
+}
